@@ -422,10 +422,7 @@ button {
   padding: 40px 32px;
 
   transform: translateY(100%);
-  transition-property: background-color, transform, opacity, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0, 0, 0, 0;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
 .main-portfolio-list-item:hover .main-portfolio-overlay-text {
