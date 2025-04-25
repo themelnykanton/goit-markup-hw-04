@@ -1,4 +1,3 @@
-
 :root {
   --font-family: "Roboto", sans-serif;
   --second-family: "Raleway", sans-serif;
@@ -101,20 +100,28 @@ button {
   gap: 40px;
 }
 
+.page-header-nav-list-item {
+  position: relative;
+
+}
+
 .page-header-nav-list-link {
   display: inline-block;
   padding: 24px 0;
-  position: relative;
 }
 
-.first-link::after {
-  color: var(--navy-blue);
-  content: '';
-  position: absolute;
+.page-header-nav-list-item::after {
+  content: "";
   background-color: inherit;
+  transition: background-color .5s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+.page-header-nav-list-item:hover::after,
+.page-header-nav-list-item:active::after {
+  content: "";
   width: 100%;
   height: 4px;
+  position: absolute;
   bottom: -1px;
   left: 0;
   border-radius: 2px;
@@ -191,7 +198,6 @@ button {
 
 .main-section {
   padding: 188px 0;
-  max-width: 1440px;
   background-image:
     linear-gradient(
       180deg,
@@ -199,9 +205,9 @@ button {
       rgba(46, 47, 66, 0.7)
     ), 
     url(../images/office-background.jpg);
-  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 1440px auto;
 }
 
 .main-section-header {
@@ -232,7 +238,7 @@ button {
   padding: 0;
   margin-top: 48px;
 
-  transition-property: background-color;
+  transition-property: background;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -255,12 +261,11 @@ button {
 }
 
 .main-qualities-icon-wrapper {
-  height: 112px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--cloud);
-  /* padding: 24px 0; */
+  padding: 24px 0;
   border: 1px solid var(--light-slate);
   border-radius: 4px;
   margin-bottom: 8px;
@@ -322,7 +327,8 @@ button {
 
 .main-team-icons-wrapper {
   display: flex;
-  justify-content: center;
+  padding: 0 16px;
+  justify-content: space-between;
   gap: 24px;
 }
 
@@ -340,7 +346,7 @@ button {
 }
 
 .main-team-link-item:hover {
-  background-color: var(--ocean);
+  background-color: var(--green);
   cursor: pointer;
 }
 
@@ -387,6 +393,8 @@ button {
 .main-portfolio-list-item {
   flex-basis: calc((100% - (2 * 24px)) / 3);
   background-color: var(--white);
+  position: relative;  
+  overflow: hidden;
   box-shadow: none;
   transition-property: box-shadow;
 }
@@ -399,32 +407,9 @@ button {
   ;
 }
 
-
-
-.main-portfolio-overlay {
-  position: relative;
-  overflow: hidden;
-}
-
-.main-portfolio-overlay-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  letter-spacing: .02em;
-  background-color: inherit;
-
-  transform: translateY(100%);
-  transition-property: background-color, transform;
-  transition-duration: 250ms, 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.main-portfolio-list-item:hover .main-portfolio-overlay-text {
-  transform: translateY(0);
-  background-color: var(--iris); 
-}
+/* .main-portfolio-list-item:nth-last-child(-n+3) {
+  margin-top: 24px;
+} */
 
 .main-portfolio-list-item-header {
   font-weight: 500;
@@ -435,8 +420,29 @@ button {
   margin-bottom: 8px;
 }
 
+.main-portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% / 1.4);
+  letter-spacing: .02em;
+  background-color: inherit;
+
+  transform: translateY(calc(100% * 1.41));
+  transition-property: background-color, transform;
+  transition-duration: 250ms, 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-portfolio-list-item:hover .main-portfolio-overlay {
+  transform: translateY(0);
+  background-color: var(--iris);
+}
+
 .main-portfolio-overlay-text {
-  padding: 40px 32px 0;
+  width: 296px; 
+  margin: 40px auto 0;
   opacity: 0;
   transition-property: color, opacity;
   transition-duration: 250ms 5s;
@@ -478,7 +484,7 @@ button {
 
 .footer-icons-list {
   display: flex;
-  gap: 16px;
+  column-gap: 16px;
 }
 
 .footer-wrapper-text {
@@ -489,7 +495,7 @@ button {
   color: var(--white);
 }
 
-.page-footer-link {
+.page-footer a {
   font-family: var(--second-family);
   display: inline-block;
   font-weight: bold;
@@ -509,7 +515,7 @@ button {
   fill: var(--cloud);
 }
 
-.footer-list-link-item {
+.footer-list-item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -522,7 +528,7 @@ button {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-list-link-item:hover {
+.footer-list-item:hover {
   background-color: var(--green);
   cursor: pointer;
 }
@@ -539,3 +545,4 @@ button {
 }
 
 /* ----------------------------------- Footer end ----------------------------------- */
+
